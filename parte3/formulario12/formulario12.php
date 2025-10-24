@@ -5,20 +5,46 @@ $todaspreguntas = json_decode($json, true);
 $mensaje = "";
 
 ///////
-$preguntasAleatorias = array_rand($todaspreguntas, 3);
-    $trespreguntas = [];
-    foreach ($preguntasAleatorias as $pregunta) {
-        $trespreguntas[] = $todaspreguntas[$pregunta];
-    }
+$ficheroRespuestas = "respuestas.txt"; // donde se guarda las respuestas correctas
 /////
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $Pregunta1 = $_POST['Pregunta0'];
-    $Pregunta2 = $_POST['Pregunta1'];
-    $Pregunta3 = $_POST['Pregunta2'];
+    
+    $respuestasCorrectas = json_decode(file_get_contents($ficheroRespuestas), true);
 
-    $Respuestas = [$Pregunta1, $Pregunta2 , $Pregunta3];
+    $respuestasUsuario = [
+    $_POST['Pregunta0']??'',
+    $_POST['Pregunta1']??'',
+    $_POST['Pregunta2']??''
+    ];
 
-    echo print_r($Respuestas);
+    ///comprobar las respuestas 
+    $correctasNum = 0;
+    $resultado = "";
+    foreach ($respuestasUsuario as $i => $respuestaUsuario) {
+        $respuestaCorrecta = $respuestasCorrectas[$i];
+
+        if ($respuestaUsuario === $respuestaCorrecta) {
+            $resultado .= "Pregunta " . ($i + 1) . ": Correcta (" . htmlspecialchars($respuestaUsuario) . ")<br>";
+            $correctasNum++;
+        } else {
+            $resultado .= "Pregunta " . ($i + 1) . ": Incorrecta. Tu respuesta: " 
+                        . htmlspecialchars($respuestaUsuario)
+                        . " | Correcta: " . htmlspecialchars($respuestaCorrecta) . "<br>";
+        }
+    }
+    $mensaje = "Has acertado $correctasNum de 3 preguntas.<br><br>$resultado";
+
+
+    
+}else{
+    $preguntasAleatorias = array_rand($todaspreguntas, 3);
+    $trespreguntas = [];
+    $respuestasCorrectas = [];
+    foreach ($preguntasAleatorias as $pregunta) {
+        $trespreguntas[] = $todaspreguntas[$pregunta];
+         $respuestasCorrectas[] = $todaspreguntas[$pregunta]['respuesta_correcta'];
+    }
+     file_put_contents($ficheroRespuestas, json_encode($respuestasCorrectas));
 }
 
 ?>
