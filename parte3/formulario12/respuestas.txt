@@ -1,1 +1,1 @@
-["session_start()","mysqli_connect()","intval()"]
+["session_start()","exit()","intval()"]

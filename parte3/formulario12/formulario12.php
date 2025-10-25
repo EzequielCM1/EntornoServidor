@@ -3,11 +3,13 @@ $rutaJson = "preguntas.json";
 $json = file_get_contents($rutaJson);
 $todaspreguntas = json_decode($json, true);
 $mensaje = "";
+$trespreguntas = [];
+$oculto = false ;
 
 ///////
 $ficheroRespuestas = "respuestas.txt"; // donde se guarda las respuestas correctas
 /////
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['comprobar'])) {
     
     $respuestasCorrectas = json_decode(file_get_contents($ficheroRespuestas), true);
 
@@ -34,11 +36,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     $mensaje = "Has acertado $correctasNum de 3 preguntas.<br><br>$resultado";
 
-
+    $oculto = true;
     
-}else{
+}elseif($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['nuevo'])) {
+    header("Location: formulario12.php");
+    exit();
+}
+    else{
     $preguntasAleatorias = array_rand($todaspreguntas, 3);
-    $trespreguntas = [];
+    
     $respuestasCorrectas = [];
     foreach ($preguntasAleatorias as $pregunta) {
         $trespreguntas[] = $todaspreguntas[$pregunta];
@@ -86,8 +92,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 
                 echo  "</p>";
             }
+
             ?>
-        <input type="submit" value="comprobar" name="comprobar">
+            <?php
+            if($oculto == true){
+            ?>
+            <input type="submit" value="nuevo" name="nuevo">
+            <?php }else{     
+             ?>
+             
+             <input type="submit" value="comprobar" name="comprobar">
+             <?php } ?>
+        
         </form>
 
         <?php if ($mensaje) : ?>
