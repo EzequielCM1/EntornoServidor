@@ -25,7 +25,7 @@ function realizarReserva($nombreCliente, $numPersonas, $exterior = false, $horaR
 
     foreach ($reservas as $reserva) {
         if (strtolower($reserva['nombre']) == strtolower($nombreCliente)) {
-            $mensaje["error"] = "Ya existe una reserva a este nombre";
+            $mensaje["error"] = "Ya existe una reserva a este nombre : $nombreCliente";
             return;
         }
     }
@@ -40,6 +40,7 @@ function realizarReserva($nombreCliente, $numPersonas, $exterior = false, $horaR
         return;
     }
 
+    
 
 
     $reservas[] = [
@@ -48,7 +49,7 @@ function realizarReserva($nombreCliente, $numPersonas, $exterior = false, $horaR
         "exterior" => $exterior,
         "hora" => $horaReserva,
     ];
-    $mensaje["valido"] = "Reserva realizada correctamente";
+    $mensaje["valido"] = "Reserva realizada correctamente a nombre de $nombreCliente para $numPersonas";
 }
 
 function mostrarReservas()
@@ -84,11 +85,11 @@ function cancelarReserva($nombreCliente)
         if (strtolower($nombreCliente) == strtolower($reserva['nombre'])) {
             unset($reservas[$i]);
             $reservas = array_values($reservas); // para no dejar huecos vacios entre cada reserva 
-            $mensaje["valido"] = "Reserva cancelada";
+            $mensaje["valido"] = "Reserva cancelada , a nombre de $nombreCliente";
             return;
         }
     }
-    $mensaje["error"] = "No se ha encontrado la reserva";
+    $mensaje["error"] = "No se ha encontrado la reserva de $nombreCliente";
 }
 
 switch ($accion) {
@@ -96,16 +97,18 @@ switch ($accion) {
         if ($nombre && $personas) {
             realizarReserva($nombre, $personas, $exterior, $hora, $reservas);
         } else {
-            $mensaje["error"] = "Falta poner algunos parametros";
+            $mensaje["error"] = "Falta poner algunos parametros , se debe indicar el nombre y las personas";
         }
         break;
     case "cancelar":
         if ($nombre) {
             cancelarReserva($nombre);
         } else {
-            $mensaje["error"] = "Falta poner el nombre";
+            $mensaje["error"] = "Falta poner el nombre de la reserva";
         }
         break;
+    default :
+    $mensaje["error"] = "Indica la accion";
 }
 
 ?>
