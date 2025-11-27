@@ -6,6 +6,7 @@ $ronda = $_SESSION['ronda']?? 0;
 $puntos = $_SESSION['puntos']?? 0;
 $aciertos = $_SESSION['aciertos']?? 0;
 $fallos = $_SESSION['fallos']?? 0;
+$ok = $_SESSION['ok']?? false;
 $personajes = [
     'nombre' => [
         'Sir Montague',
@@ -93,9 +94,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && $_POST['accion'] == "pasar") {
     if ($impostor === 1) {
         $puntos -= 5;
         $fallos++;
+        $ok = false;
     } else {
         $puntos += 10;
         $aciertos++;
+        $ok = true;
     }
 
     $ronda++;
@@ -103,15 +106,18 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && $_POST['accion'] == "pasar") {
     $_SESSION['puntos'] = $puntos;
     $_SESSION['aciertos'] = $aciertos;
     $_SESSION['fallos'] = $fallos;
+    $_SESSION['ok'] == $ok;
     header("Location: juego.php");
     exit();
 } elseif ($_SERVER['REQUEST_METHOD'] == "POST" && $_POST['accion'] == "rechazar") {
     if ($impostor === 1) {
         $puntos +=10;
         $aciertos++;
+        $ok = true;
     } else {
         $puntos -=5;
         $fallos++;
+        $ok = false;
     }
     $ronda++;
     $_SESSION['ronda'] = $ronda;
@@ -172,9 +178,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && $_POST['accion'] == "pasar") {
         <button name="accion" value="rechazar">Rechazar entrada</button>
     </form>
 
+    <?php if($ok == true){?>
     <p class="ok">El personaje era un impostor</p>
+    <?php }else{ ?>
     <p class="ok">¡Correcto! Has ganado 10 puntos</p>
-
+        <?php  } ?>
 </body>
 
 </html>
