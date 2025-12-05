@@ -60,7 +60,7 @@
         </header>
 
         <!-- Formulario de Login -->
-        <form id="loginForm" class="space-y-6" method="post">
+        <form class="space-y-6" method="post">
             
             <!-- Campo de Usuario/Email -->
             <div>
