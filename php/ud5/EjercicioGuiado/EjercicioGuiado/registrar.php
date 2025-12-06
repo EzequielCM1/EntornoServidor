@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     if (empty($contrasenia)) {
         $errores['password'] = "La contraseña no puede estar vacia";
     }
-    echo password_hash($contrasenia,PASSWORD_DEFAULT);
+    $passwordHash =  password_hash($contrasenia,PASSWORD_DEFAULT);
 
     if (empty($errores)) {
         require_once 'models/LoginModel.php';
@@ -30,17 +30,20 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
         $resultado = $loginModel->buscarUsuario($nombre, $contrasenia);
         if ($resultado) {
+            $_SESSION['flash_message'] = "Usuario ya existe";
+            header("location: registrar.php");
+            exit();
+        }
 
-            $rol = $loginModel->comprobarRol($nombre);
-            
+        $registrado = $loginModel->registrarUsuario($nombre, trim($passwordHash));
+        if($registrado){
+            $rol = $loginModel->comprobarRol($nombre);  
             $_SESSION['rol'] = $rol;
 
-            $_SESSION['flash_message'] = "Usuario logueado correctamente";
+            $_SESSION['flash_message'] = "Te has registrado correctamente";
             $_SESSION['usuario'] = $nombre;
             header("location: index.php");
             exit();
-        }else{
-            $_SESSION['flash_message']  = "Usuario y contraseña incorrectos";
         }
     }
 }
@@ -48,4 +51,4 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
 // incluimos el html
-require_once APP_ROOT . '/views/login_view.php';
+require_once APP_ROOT . '/views/registrar_view.php';

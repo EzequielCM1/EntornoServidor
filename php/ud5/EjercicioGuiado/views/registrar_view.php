@@ -52,10 +52,10 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3v-1m3-4a3 3 0 00-3 3v1"></path>
             </svg>
             <h1 class="text-3xl font-extrabold text-gray-900 mt-2">
-                ¡Bienvenido de Nuevo!
+                ¡Bienvenido!
             </h1>
             <p class="mt-2 text-sm text-gray-500">
-                Inicia sesión en tu cuenta.
+                Registrarse
             </p>
         </header>
 
@@ -113,9 +113,9 @@
                 <button 
                     type="submit" 
                     class="btn-submit w-full flex justify-center py-3 px-4 border border-transparent rounded-xl shadow-md text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                    Iniciar Sesión
+                    Registrarse
                 </button>
-                <a href="registrar.php" class="font-medium text-yellow-500 hover:text-yellow-700 transition duration-150 action-link">No tienes cuenta ? registrarse </a>
+                <a href="login.php" class="font-medium text-yellow-500 hover:text-yellow-700 transition duration-150 action-link">tienes cuenta ? iniciar sesion </a>
             </div>
             <div>
                 <?php if(!empty($mensaje)) : ?>
