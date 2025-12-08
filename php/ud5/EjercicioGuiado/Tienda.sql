@@ -31,3 +31,7 @@ UPDATE `tienda`.`usuarios` SET `rol` = 'admin' WHERE (`id` = '1');
 CREATE USER IF NOT EXISTS 'usuario_tienda'@'localhost' IDENTIFIED BY '1234';
 GRANT ALL PRIVILEGES ON tienda.* TO 'usuario_tienda'@'localhost';
 FLUSH PRIVILEGES;
+-- SHOW GRANTS FOR 'usuario_tienda'@'localhost'; esto es para comprobar si tiene acceso si sale usage es que no
+-- DROP USER IF EXISTS 'usuario_tienda'@'localhost';
+-- SELECT User, Host FROM mysql.user;
+

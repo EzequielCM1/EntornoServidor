@@ -42,7 +42,14 @@ if(isset($_SESSION['mensaje'])){
 }
 
 //obtener datos para pasarlo a la vista
+
+$busqueda =trim( $_GET['buscar']??'');
+if($busqueda !==""){
+$lista_productos = $productosModel->buscarProductoNombre($busqueda);
+}else{
 $lista_productos = $productosModel->obtenerTodos();
+}
+
 
 //cargar la vista 
 require_once APP_ROOT . '/views/index_view.php';

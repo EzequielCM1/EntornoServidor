@@ -35,8 +35,22 @@ class ProductosModel
             WHERE id_producto = ?";
         return $this->db->executeUpdate($sql, [$nombre, $descripcion, $precio, $id]);
     }
-    public function buscarId($id){
+    public function buscarId($id)
+    {
         $sql = "SELECT * FROM productos WHERE id_producto = ?";
         return $this->db->executeQuery($sql, [$id]);
     }
+
+    public function buscarProductoNombre($nombre)
+    {
+        $sql = "SELECT * FROM productos WHERE nombre LIKE ? ORDER BY id_producto ASC";
+        return $this->db->executeQuery($sql, [$nombre . '%']); // esto hara que busque si comienza igual
+    }
+    /*    public function buscarProductoNombre($nombre){ Esto es lo mismo pero ignorando las mayusculas
+    $sql = "SELECT * FROM productos 
+            WHERE LOWER(nombre) LIKE LOWER(?) 
+            ORDER BY id_producto ASC";
+
+    return $this->db->executeQuery($sql, [$nombre . '%']);
+    } */
 }

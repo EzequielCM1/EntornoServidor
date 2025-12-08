@@ -80,6 +80,11 @@
             background-color: #f8d7da;
             color: #721c24;
         }
+        .buscar{
+            display: flex;
+            flex-direction: row;
+            gap: 25px;
+        }
     </style>
 </head>
 
@@ -128,7 +133,12 @@
             </a>
         </div>
 
-
+        <div class="mb-6">
+            <form class="buscar" action="" method="get">
+            <input type="text" name="buscar" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-blue-500 focus:border-blue-500 shadow-inner transition duration-150 ease-in-out">
+            <button class="btn-insert px-6 py-3 rounded-full text-white bg-blue-600 hover:bg-blue-700">Buscar</button>
+            </form>
+        </div>
 
         <div class="overflow-x-auto shadow-xl rounded-xl">
             <?php if (!empty($lista_productos)): ?>
@@ -161,12 +171,12 @@
                         <?php endforeach; ?>
                     </tbody>
                 </table>
-                <!-- <?php else : ?> -->
-                <div id="no-products-message" class="p-6 text-center bg-gray-50 rounded-lg hidden">
+                <?php else : ?> 
+                <div id="no-products-message" class="p-6 text-center bg-gray-50 rounded-lg">
                     <h4 class="text-lg font-semibold text-gray-500">No existe ningún producto ahora mismo</h4>
                     <p class="text-sm text-gray-400 mt-1">Utiliza el botón 'Insertar uno Nuevo' para empezar.</p>
                 </div>
-                <!-- <?php endif; ?> -->
+                <?php endif; ?> 
         </div>
 
         </div>
