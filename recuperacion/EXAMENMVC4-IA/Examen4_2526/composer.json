@@ -1,0 +1,11 @@
+{
+    "name": "ezequielcampos/enrutadormodelo",
+    "description": "ejemplo de enrutador",
+    "autoload": {
+        "psr-4": {
+            "Ezequiel\\App\\": "app/",
+            "Ezequiel\\Lib\\": "lib/"
+        }
+    },
+    "require": {}
+}

@@ -1,0 +1,11 @@
+{
+    "name": "ezequiel/fantasy-boss-mvc",
+    "description": "ejemplo de enrutador",
+    "autoload": {
+        "psr-4": {
+            "Ezequiel\\App\\": "app/",
+            "Ezequiel\\Lib\\": "lib/"
+        }
+    },
+    "require": {}
+}

@@ -1,0 +1,16 @@
+{
+    "name": "pepelluyot/ex42526",
+    "autoload": {
+        "psr-4": {
+            "Pepelluyot\\App\\": "app/",
+            "Pepelluyot\\Lib\\": "lib/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Pepe Lluyot",
+            "email": "pepe.lluyot@iescristobaldemonroy.es"
+        }
+    ],
+    "require": {}
+}
