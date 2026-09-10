@@ -1,0 +1,585 @@
+/* ============================================================
+   FantasyBoss — styles.css  |  Football Theme
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+    --green:       #00a651;
+    --green-dark:  #007a3d;
+    --green-light: #e8f8ef;
+    --bg:          #0a1628;
+    --bg-card:     #111f35;
+    --bg-panel:    #162840;
+    --border:      #1e3a5f;
+    --text:        #e8edf5;
+    --text-muted:  #7a9bc0;
+    --gold:        #f0c030;
+    --red:         #e53e3e;
+    --blue:        #4299e1;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--bg);
+    background-image:
+        radial-gradient(ellipse at 20% 50%, rgba(0,166,81,0.06) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(66,153,225,0.05) 0%, transparent 50%);
+    color: var(--text);
+    min-height: 100vh;
+}
+
+a { text-decoration: none; color: inherit; }
+
+/* ── LOGIN ─────────────────────────────────────────────────── */
+.login-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: radial-gradient(ellipse at center, #0d2a1a 0%, #0a1628 70%);
+}
+
+.login-container { width: 100%; max-width: 440px; padding: 1rem; }
+
+.login-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 0 40px rgba(0,166,81,0.15), 0 20px 60px rgba(0,0,0,0.6);
+    overflow: hidden;
+}
+
+.login-header {
+    background: linear-gradient(135deg, #007a3d, #004d26);
+    border-bottom: 3px solid var(--gold);
+    color: white;
+    text-align: center;
+    padding: 2.5rem 1.5rem 2rem;
+}
+
+.login-logo { font-size: 3rem; margin-bottom: 0.5rem; }
+
+.login-header h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.4rem;
+}
+
+.login-subtitle { font-size: 0.85rem; opacity: 0.75; }
+.login-content  { padding: 2rem 1.5rem; }
+
+.scanner-section h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1rem;
+    color: var(--green);
+    text-align: center;
+    margin-bottom: 0.4rem;
+    letter-spacing: 0.05em;
+}
+
+.login-hint { text-align: center; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+
+.form-group { margin-bottom: 1.25rem; }
+
+.form-group label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    margin-bottom: 0.4rem;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 1rem;
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    font-family: 'Roboto', sans-serif;
+}
+
+.form-control:focus {
+    border-color: var(--green);
+    box-shadow: 0 0 0 3px rgba(0,166,81,0.15);
+}
+
+.form-control::placeholder { color: var(--text-muted); }
+
+.error-message { display: block; color: var(--red); font-size: 0.8rem; margin-top: 5px; }
+
+.login-footer {
+    text-align: center;
+    padding: 1rem;
+    background: rgba(0,0,0,0.2);
+    border-top: 1px solid var(--border);
+    font-size: 0.78rem;
+    color: var(--text-muted);
+}
+
+/* ── BOTONES ─────────────────────────────────────────────── */
+.btn {
+    display: inline-block;
+    padding: 0.65rem 1.25rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 0.03em;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--green-dark), var(--green));
+    color: white;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, var(--green), #00cc66);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(0,166,81,0.4);
+}
+
+.btn-secondary {
+    background: var(--bg-panel);
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+
+.btn-secondary:hover { border-color: var(--green); color: var(--green); }
+
+.btn-danger {
+    background: rgba(229,62,62,0.15);
+    color: #fc8181;
+    border: 1px solid rgba(229,62,62,0.3);
+}
+
+.btn-danger:hover { background: rgba(229,62,62,0.3); transform: translateY(-1px); }
+
+.btn-sm  { padding: 0.4rem 0.85rem; font-size: 0.8rem; }
+.btn-block { display: block; width: 100%; }
+
+/* ── HEADER ──────────────────────────────────────────────── */
+.main-header {
+    background: var(--bg-card);
+    border-bottom: 3px solid var(--green-dark);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+.header-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    gap: 1rem;
+}
+
+.header-logo h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--green);
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+}
+
+.main-nav { display: flex; gap: 0.25rem; }
+
+.nav-link {
+    padding: 0.45rem 1rem;
+    border-radius: 6px;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    transition: all 0.2s;
+}
+
+.nav-link:hover, .nav-link.active {
+    background: rgba(0,166,81,0.12);
+    color: var(--green);
+}
+
+.user-info { display: flex; flex-direction: column; align-items: flex-end; }
+.user-name  { font-size: 0.85rem; font-weight: 700; color: var(--text); }
+.user-role  { font-size: 0.72rem; color: var(--gold); font-weight: 500; }
+
+.btn-logout {
+    padding: 0.4rem 0.85rem;
+    background: transparent;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.btn-logout:hover { border-color: var(--red); color: var(--red); }
+
+/* ── LAYOUT ──────────────────────────────────────────────── */
+.main-content { padding: 2rem 1rem; }
+.content-container { max-width: 1300px; margin: 0 auto; }
+
+.page-header { margin-bottom: 1.75rem; }
+
+.page-header h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--green);
+    margin-bottom: 0.3rem;
+    letter-spacing: 0.04em;
+}
+
+.page-description { color: var(--text-muted); font-size: 0.9rem; }
+
+/* ── FLASH ───────────────────────────────────────────────── */
+.flash-message {
+    padding: 0.9rem 1.25rem;
+    border-radius: 10px;
+    margin-bottom: 1.25rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.flash-success {
+    background: rgba(0,166,81,0.1);
+    border: 1px solid rgba(0,166,81,0.3);
+    color: #6ee7a0;
+}
+
+.flash-error {
+    background: rgba(229,62,62,0.1);
+    border: 1px solid rgba(229,62,62,0.3);
+    color: #fc8181;
+}
+
+/* ── FILTER BAR ──────────────────────────────────────────── */
+.filter-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+    padding: 0.75rem 1rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+}
+
+.filter-label { font-size: 0.85rem; color: var(--text-muted); font-weight: 600; margin-right: 0.25rem; }
+
+.filter-btn {
+    padding: 0.35rem 0.85rem;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    transition: all 0.2s;
+}
+
+.filter-btn:hover, .filter-btn.active {
+    background: rgba(0,166,81,0.15);
+    color: var(--green);
+    border-color: var(--green-dark);
+}
+
+/* ── JUGADOR CARDS ───────────────────────────────────────── */
+.jugadores-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.25rem;
+}
+
+.jugador-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    display: flex;
+    flex-direction: column;
+}
+
+.jugador-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+    border-color: var(--green-dark);
+}
+
+.jugador-image {
+    position: relative;
+    height: 180px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #0d2a1a, #004d26);
+}
+
+.jugador-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    transition: transform 0.3s;
+}
+
+.jugador-card:hover .jugador-image img { transform: scale(1.05); }
+
+.jugador-status {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    padding: 0.25rem 0.65rem;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 700;
+}
+
+.status-available { background: rgba(0,166,81,0.2);  color: #6ee7a0; border: 1px solid rgba(0,166,81,0.4); }
+.status-busy      { background: rgba(240,192,48,0.2); color: #f6e05e; border: 1px solid rgba(240,192,48,0.4); }
+.status-hurt      { background: rgba(229,62,62,0.2);  color: #fc8181; border: 1px solid rgba(229,62,62,0.4); }
+
+.posicion-badge {
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+    padding: 0.25rem 0.65rem;
+    border-radius: 6px;
+    font-size: 0.72rem;
+    font-weight: 700;
+}
+
+.pos-portero        { background: rgba(240,192,48,0.3); color: #f6e05e; }
+.pos-defensa        { background: rgba(0,166,81,0.3);   color: #6ee7a0; }
+.pos-centrocampista { background: rgba(66,153,225,0.3); color: #90cdf4; }
+.pos-delantero      { background: rgba(229,62,62,0.3);  color: #fc8181; }
+
+.jugador-info { padding: 1rem 1.1rem; flex: 1; }
+
+.jugador-nombre {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.25rem;
+    letter-spacing: 0.03em;
+}
+
+.jugador-club { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.75rem; }
+
+.jugador-stats { display: flex; gap: 1rem; margin-bottom: 0.75rem; }
+
+.stat-item { display: flex; align-items: center; gap: 0.4rem; }
+.stat-icon  { font-size: 1rem; }
+.stat-label { font-size: 0.7rem; color: var(--text-muted); display: block; }
+.stat-value { font-size: 0.9rem; font-weight: 700; color: var(--text); display: block; }
+
+.media-bar {
+    height: 4px;
+    background: var(--border);
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.media-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--green-dark), var(--green));
+    border-radius: 999px;
+}
+
+.jugador-actions {
+    padding: 0.85rem 1.1rem;
+    border-top: 1px solid var(--border);
+}
+
+/* ── JORNADA CARDS ───────────────────────────────────────── */
+.jornadas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.25rem;
+}
+
+.jornada-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.5rem;
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.jornada-card:hover { transform: translateY(-3px); border-color: var(--green-dark); }
+
+.jornada-numero {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--green);
+    min-width: 56px;
+    text-align: center;
+    background: rgba(0,166,81,0.1);
+    border-radius: 10px;
+    padding: 0.5rem;
+    line-height: 1;
+}
+
+.jornada-info { flex: 1; }
+
+.jornada-nombre {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.3rem;
+    letter-spacing: 0.03em;
+}
+
+.jornada-desc { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 0.75rem; line-height: 1.5; }
+
+.jornada-stats { display: flex; flex-direction: column; gap: 0.35rem; margin-bottom: 0.75rem; }
+.jornada-stat  { display: flex; align-items: center; gap: 0.4rem; font-size: 0.82rem; color: var(--text-muted); }
+
+.estado-badge {
+    display: inline-block;
+    padding: 0.2rem 0.7rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.estado-abierta { background: rgba(0,166,81,0.15); color: #6ee7a0; border: 1px solid rgba(0,166,81,0.3); }
+.estado-cerrada { background: rgba(229,62,62,0.15); color: #fc8181; border: 1px solid rgba(229,62,62,0.3); }
+
+/* ── SELECTED JUGADOR INFO ───────────────────────────────── */
+.selected-jugador-info {
+    background: var(--bg-card);
+    border: 1px solid var(--green-dark);
+    border-radius: 12px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.jugador-summary { display: flex; align-items: center; gap: 1rem; }
+
+.jugador-summary img {
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+    object-fit: cover;
+    object-position: top;
+    border: 2px solid var(--green-dark);
+}
+
+.summary-details h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.2rem;
+    color: var(--green);
+    margin-bottom: 0.3rem;
+}
+
+.summary-details p { font-size: 0.85rem; color: var(--text-muted); }
+
+/* ── TABLA PLANTILLA ─────────────────────────────────────── */
+.packages-section {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.table-responsive { overflow-x: auto; }
+
+.packages-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+
+.packages-table thead { background: var(--bg-panel); }
+
+.packages-table th {
+    padding: 0.9rem 1.1rem;
+    text-align: left;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    border-bottom: 2px solid var(--border);
+    white-space: nowrap;
+}
+
+.packages-table td {
+    padding: 0.85rem 1.1rem;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+    vertical-align: middle;
+}
+
+.packages-table tbody tr:hover { background: rgba(255,255,255,0.02); }
+.packages-table tbody tr:last-child td { border-bottom: none; }
+
+.status-badge {
+    display: inline-block;
+    padding: 0.22rem 0.65rem;
+    border-radius: 999px;
+    font-size: 0.73rem;
+    font-weight: 700;
+}
+
+.status-active {
+    background: rgba(0,166,81,0.15);
+    color: #6ee7a0;
+    border: 1px solid rgba(0,166,81,0.3);
+}
+
+/* ── EMPTY STATE ─────────────────────────────────────────── */
+.empty-state {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: var(--text-muted);
+    font-size: 1rem;
+    grid-column: 1 / -1;
+}
+
+.empty-state a { color: var(--green); text-decoration: underline; }
+
+/* ── FOOTER ──────────────────────────────────────────────── */
+.main-footer {
+    border-top: 1px solid var(--border);
+    margin-top: 3rem;
+    background: var(--bg-card);
+}
+
+.footer-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 1.25rem 1.5rem;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.82rem;
+}
+
+/* ── RESPONSIVE ──────────────────────────────────────────── */
+@media (max-width: 768px) {
+    .header-container { flex-wrap: wrap; height: auto; padding: 0.75rem 1rem; }
+    .user-info { display: none; }
+    .jugadores-grid, .jornadas-grid { grid-template-columns: 1fr; }
+    .jornada-card { flex-direction: column; }
+}
